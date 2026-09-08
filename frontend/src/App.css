@@ -628,6 +628,136 @@ input {
   line-height: 1.5;
 }
 
+.proof-upload-wrap {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(92, 60, 45, 0.12);
+}
+
+.proof-upload {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px dashed rgba(92, 60, 45, 0.3);
+  border-radius: 14px;
+  background: rgba(255, 252, 250, 0.72);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.proof-upload:hover {
+  border-color: rgba(92, 60, 45, 0.6);
+  background: rgba(255, 252, 250, 0.96);
+  transform: translateY(-1px);
+}
+
+.proof-upload input {
+  display: none;
+}
+
+.proof-upload-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 1px solid rgba(92, 60, 45, 0.2);
+  background: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.proof-upload-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.proof-upload-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.proof-upload strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.proof-upload-header span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(92, 60, 45, 0.08);
+  color: #6d3d4d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-upload p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.68;
+  line-height: 1.45;
+}
+
+.proof-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(92, 60, 45, 0.06);
+}
+
+.proof-item > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.proof-item strong {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.proof-item span {
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.proof-item button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.proof-item button:hover {
+  opacity: 1;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

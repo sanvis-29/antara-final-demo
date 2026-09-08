@@ -59,6 +59,13 @@ export function buildIncidentPayload(
     form.digitalHarassment ||
     form.passwordControlled;
 
+  const evidence = form.proofs.map((file) => ({
+    category: "general",
+    file_name: file.name,
+    file_type: file.type || "application/octet-stream",
+    size_bytes: file.size,
+  }));
+
   return {
     description: form.description.trim(),
 
@@ -105,6 +112,9 @@ export function buildIncidentPayload(
       private_content_threat:
         form.digitalThreat,
     },
+
+    evidence:
+      evidence.length > 0 ? evidence : [],
   };
 }
 

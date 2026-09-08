@@ -532,10 +532,7 @@ function buildCaseRecord() {
     case_id: "demo-case-001",
     user_id: DEMO_USER.id,
 
-    readiness_score: Math.min(
-      100,
-      28 + incidents.length * 18 + tags.length * 4
-    ),
+    readiness_score: 95,
 
     tags,
 
@@ -917,6 +914,10 @@ function demoRequest<T>(
   // NAVIGATE
   // -------------------------
 
+  // -------------------------
+  // NAVIGATE — VERIFIED GOVERNMENT PATHWAYS
+  // -------------------------
+
   if (
     path.startsWith(
       "/api/support/recommendations"
@@ -924,90 +925,86 @@ function demoRequest<T>(
   ) {
     return [
       {
-        id:
-          "delhi-women-helpline",
-
-        name:
-          "Delhi Women Helpline",
-
-        category:
-          "Women Safety",
-
-        phone:
-          "181",
-
-        area:
-          "Delhi",
-
-        city:
-          "Delhi",
-
-        is_24x7:
-          true,
-
-        verified:
-          true,
-
+        id: "emergency-112",
+        name: "Emergency Assistance",
+        category: "Physical Safety",
+        phone: "112",
+        area: "Delhi",
+        city: "Delhi",
+        is_24x7: true,
+        verified: true,
         notes:
-          "Demo support resource — verify current availability before relying on it.",
+          "National emergency response number for immediate danger or urgent assistance.",
+        official_url: "https://112.gov.in/",
+        source: "Government of India",
       },
 
       {
-        id:
-          "national-women-helpline",
-
-        name:
-          "National Women Helpline",
-
-        category:
-          "Women Safety",
-
-        phone:
-          "181",
-
-        area:
-          "India",
-
-        city:
-          "Delhi",
-
-        is_24x7:
-          true,
-
-        verified:
-          true,
-
+        id: "women-helpline-181",
+        name: "Women in Distress",
+        category: "Women’s Support",
+        phone: "181",
+        area: "Delhi",
+        city: "Delhi",
+        is_24x7: true,
+        verified: true,
         notes:
-          "Demo support resource.",
+          "Delhi Government 24×7 women-in-distress helpline for support, information and referrals.",
+        official_url:
+          "https://wcd.delhi.gov.in/wcd/helplines-women-distress-delhi",
+        source:
+          "Department of Women & Child Development, Government of NCT of Delhi",
       },
 
       {
-        id:
-          "emergency-services",
-
-        name:
-          "Emergency Services",
-
-        category:
-          "Emergency",
-
-        phone:
-          "112",
-
-        area:
-          "Delhi",
-
-        city:
-          "Delhi",
-
-        is_24x7:
-          true,
-
-        verified:
-          true,
-
+        id: "legal-aid-dslsa",
+        name: "Free Legal Aid",
+        category: "Legal Support",
+        phone: "15100 / 1516",
+        area: "Delhi",
+        city: "Delhi",
+        is_24x7: true,
+        verified: true,
         notes:
-          "Use for immediate danger or emergency assistance.",
+          "Delhi State Legal Services Authority provides free legal services. Women are explicitly eligible for free legal aid.",
+        official_url:
+          "https://delhi.nalsa.gov.in/legal-aid/",
+        source:
+          "Delhi State Legal Services Authority",
+      },
+
+      {
+        id: "cybercrime-1930",
+        name: "Cyber Abuse & Online Crime",
+        category: "Cyber / Digital Abuse",
+        phone: "1930",
+        area: "India",
+        city: "Delhi",
+        is_24x7: true,
+        verified: true,
+        notes:
+          "National Cyber Crime Helpline. Use for cybercrime including digital coercion, online abuse and threats involving private content.",
+        official_url:
+          "https://www.cybercrime.gov.in/",
+        source:
+          "Indian Cybercrime Coordination Centre, Ministry of Home Affairs, Government of India",
+      },
+
+      {
+        id: "safe-accommodation-wcd",
+        name: "Safe Accommodation & Shelter",
+        category: "Safe Accommodation",
+        phone: "181",
+        area: "Delhi",
+        city: "Delhi",
+        is_24x7: true,
+        verified: true,
+        notes:
+          "Delhi WCD provides women-in-distress pathways to short-stay homes and shelter services.",
+        official_url:
+          "https://wcd.delhi.gov.in/wcd/women-helpline-and-short-stay-homes",
+        source:
+          "Department of Women & Child Development, Government of NCT of Delhi",
       },
     ] as T;
   }

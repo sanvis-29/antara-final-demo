@@ -39,6 +39,7 @@ export interface IncidentFormData {
 
   amount: string;
   platform: string;
+  proofs: File[];
 }
 
 export default function RecordIncident({
@@ -76,6 +77,7 @@ export default function RecordIncident({
 
     amount: "",
     platform: "",
+    proofs: [],
   });
 
   const update = <K extends keyof IncidentFormData>(
@@ -341,6 +343,20 @@ export default function RecordIncident({
                     description="For example: treatment, medication, examination or care after the incident."
                   />
                 </div>
+
+                <SupportingProofUpload
+                  label="Physical safety evidence"
+                  files={form.proofs}
+                  onAdd={(files) =>
+                    update("proofs", [...form.proofs, ...files])
+                  }
+                  onRemove={(index) =>
+                    update(
+                      "proofs",
+                      form.proofs.filter((_, i) => i !== index)
+                    )
+                  }
+                />
               </motion.div>
 
               {/* FINANCIAL */}
@@ -449,6 +465,20 @@ export default function RecordIncident({
                     </label>
                   </motion.div>
                 )}
+
+                <SupportingProofUpload
+                  label="Money & financial access evidence"
+                  files={form.proofs}
+                  onAdd={(files) =>
+                    update("proofs", [...form.proofs, ...files])
+                  }
+                  onRemove={(index) =>
+                    update(
+                      "proofs",
+                      form.proofs.filter((_, i) => i !== index)
+                    )
+                  }
+                />
               </motion.div>
 
               {/* DIGITAL */}
@@ -563,6 +593,20 @@ export default function RecordIncident({
                     </label>
                   </motion.div>
                 )}
+
+                <SupportingProofUpload
+                  label="Digital & private content evidence"
+                  files={form.proofs}
+                  onAdd={(files) =>
+                    update("proofs", [...form.proofs, ...files])
+                  }
+                  onRemove={(index) =>
+                    update(
+                      "proofs",
+                      form.proofs.filter((_, i) => i !== index)
+                    )
+                  }
+                />
               </motion.div>
             </div>
           </div>
@@ -623,3 +667,70 @@ function Experience({
     </button>
   );
 }
+
+interface SupportingProofUploadProps {
+  label: string;
+  files: File[];
+  onAdd: (files: File[]) => void;
+  onRemove: (index: number) => void;
+}
+
+function SupportingProofUpload({
+  label,
+  files,
+  onAdd,
+  onRemove,
+}: SupportingProofUploadProps) {
+  return (
+    <div className="proof-upload-wrap">
+      <label className="proof-upload">
+        <input
+          type="file"
+          multiple
+          accept="image/*,video/*,.pdf"
+          onChange={(event) => {
+            const selectedFiles = Array.from(event.target.files ?? []);
+
+            if (selectedFiles.length > 0) {
+              onAdd(selectedFiles);
+            }
+
+            event.currentTarget.value = "";
+          }}
+        />
+
+        <div className="proof-upload-icon">＋</div>
+
+        <div className="proof-upload-copy">
+          <div className="proof-upload-header">
+            <strong>{label}</strong>
+            <span>Optional</span>
+          </div>
+
+          <p>
+            Photos, screenshots, videos, or documents that help preserve
+            what happened.
+          </p>
+        </div>
+      </label>
+
+      {files.length > 0 && (
+        <div className="proof-list">
+          {files.map((file, index) => (
+            <div className="proof-item" key={`${file.name}-${index}`}>
+              <div>
+                <strong>{file.name}</strong>
+                <span>{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+              </div>
+
+              <button type="button" onClick={() => onRemove(index)}>
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
